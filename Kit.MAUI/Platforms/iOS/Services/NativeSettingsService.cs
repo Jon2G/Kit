@@ -7,9 +7,23 @@ namespace Kit.MAUI.Services
     {
         public void OpenAppSettings()
         {
-            string app_bundle_id = AppInfo.PackageName;
-            var url = new NSUrl($"app-settings:{app_bundle_id}");
-            UIApplication.SharedApplication.OpenUrl(url);
+            string appBundleId = AppInfo.PackageName;
+            var url = new NSUrl($"app-settings:{appBundleId}");
+
+            if (UIApplication.SharedApplication.CanOpenUrl(url))
+            {
+                UIApplication.SharedApplication.OpenUrl(url, new UIApplicationOpenUrlOptions(), (success) =>
+                {
+                    if (!success)
+                    {
+                        Console.WriteLine("Failed to open app settings.");
+                    }
+                });
+            }
+            else
+            {
+                Console.WriteLine("Cannot open app settings URL.");
+            }
         }
     }
 }
