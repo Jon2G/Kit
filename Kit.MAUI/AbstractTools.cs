@@ -8,23 +8,24 @@ namespace Kit
 {
     public abstract class AbstractTools
     {
+        
         private Lazy<ISynchronizeInvoke> _SynchronizeInvoke =
-            new Lazy<ISynchronizeInvoke>(() => TinyIoC.TinyIoCContainer.Current.Get<ISynchronizeInvoke>());
+            new Lazy<ISynchronizeInvoke>(() => TinyTypeContainer.Container.Get<ISynchronizeInvoke>());
         public ISynchronizeInvoke SynchronizeInvoke => _SynchronizeInvoke.Value;
 
         private Lazy<IScreenManager> _ScreenManager =
-            new Lazy<IScreenManager>(() => TinyIoC.TinyIoCContainer.Current.Get<IScreenManager>());
+            new Lazy<IScreenManager>(() => TinyTypeContainer.Container.Get<IScreenManager>());
         public IScreenManager ScreenManager => _ScreenManager.Value;
 
         private Lazy<IBarCodeBuilder> _BarCodeBuilder =
-            new Lazy<IBarCodeBuilder>(() => TinyIoC.TinyIoCContainer.Current.Get<IBarCodeBuilder>());
+            new Lazy<IBarCodeBuilder>(() => TinyTypeContainer.Container.Get<IBarCodeBuilder>());
         public IBarCodeBuilder BarCodeBuilder => _BarCodeBuilder.Value;
 
         private Lazy<IDialogs> _Dialogs =
-            new Lazy<IDialogs>(() => TinyIoC.TinyIoCContainer.Current.Get<IDialogs>());
+            new Lazy<IDialogs>(() => TinyTypeContainer.Container.Get<IDialogs>());
         public IDialogs Dialogs => _Dialogs.Value;
         private Lazy<Kit.Controls.CrossImage.CrossImageExtensions> _ImageExtensions =
-            new Lazy<Kit.Controls.CrossImage.CrossImageExtensions>(() => TinyIoC.TinyIoCContainer.Current.Resolve<Kit.Controls.CrossImage.CrossImageExtensions>());
+            new Lazy<Kit.Controls.CrossImage.CrossImageExtensions>(() => TinyTypeContainer.Container.Get<Kit.Controls.CrossImage.CrossImageExtensions>());
         public Kit.Controls.CrossImage.CrossImageExtensions ImageExtensions => _ImageExtensions.Value;
 
         public virtual string LibraryPath => Environment.GetFolderPath(Environment.SpecialFolder.Personal);
