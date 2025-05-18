@@ -1,6 +1,5 @@
 ﻿using Kit.Extensions;
 using Serilog;
-using System.Data.SqlClient;
 using System.Text;
 
 namespace Kit

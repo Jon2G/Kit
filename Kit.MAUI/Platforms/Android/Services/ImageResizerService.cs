@@ -1,10 +1,6 @@
 ﻿using Android.Graphics;
 using Kit.Droid.Services;
 using Kit.Forms.Services.Interfaces;
-using System;
-using System.IO;
-using System.Threading.Tasks;
-using Xamarin.Forms;
 
 [assembly: Dependency(typeof(ImageResizerService))]
 namespace Kit.Droid.Services

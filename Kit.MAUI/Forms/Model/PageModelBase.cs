@@ -1,15 +1,14 @@
-﻿using System;
+﻿using FreshMvvm.Maui;
 using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 
 // ReSharper disable CheckNamespace
 
 namespace Kit.Model
 {
     [Preserve(AllMembers = true)]
-    public class PageModelBase : FreshMvvm.FreshBasePageModel
+    public class PageModelBase : FreshBasePageModel
     {
         #region INotifyPropertyChanged
         public new event PropertyChangedEventHandler PropertyChanged;

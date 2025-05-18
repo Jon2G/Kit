@@ -1,7 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-
-namespace Kit.Forms.Effects
+﻿namespace Kit.Forms.Effects
 {
     public class ViewLifecycleEffect : RoutingEffect
     {

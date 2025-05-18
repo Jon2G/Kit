@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using Xamarin.Forms;
+﻿using System.Globalization;
 
 namespace Kit.Forms.Pages.PinView
 {

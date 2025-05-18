@@ -1,13 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net9.0;net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.19041.0</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.17763.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<MauiEnableXamlCBindingWithSourceCompilation>true</MauiEnableXamlCBindingWithSourceCompilation>
 		<SkipValidateMauiImplicitPackageReferences>true</SkipValidateMauiImplicitPackageReferences>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
@@ -26,7 +27,7 @@
 	  <MauiCss Remove="Forms\Fonts\FontelloIcons\css\fontello.css" />
 	</ItemGroup>
 
-	<ItemGroup>
+	<!--<ItemGroup>
 	  <MauiXaml Remove="Forms\Controls\ActionSheet\ActionSheet.xaml" />
 	  <MauiXaml Remove="Forms\Controls\ActivityIndicator\ActivityIndicatorView.xaml" />
 	  <MauiXaml Remove="Forms\Controls\ArrowButton.xaml" />
@@ -37,10 +38,10 @@
 	  <MauiXaml Remove="Forms\Dialogs\Login.xaml" />
 	  <MauiXaml Remove="Forms\Pages\OtgCodeBarSacnnerDetector\OtgCodeBarScannerDetectorPage.xaml" />
 	  <MauiXaml Remove="Forms\Pages\PinView\PinPanel.xaml" />
-	</ItemGroup>
+	</ItemGroup>-->
 
 	<ItemGroup>
-	  <EmbeddedResource Include="Forms\Controls\ActionSheet\ActionSheet.xaml">
+	  <!--<EmbeddedResource Include="Forms\Controls\ActionSheet\ActionSheet.xaml">
 	    <SubType>Designer</SubType>
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
@@ -67,7 +68,7 @@
 	  <EmbeddedResource Include="Forms\Dialogs\Login.xaml">
 	    <SubType>Designer</SubType>
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
+	  </EmbeddedResource>-->
 	  <EmbeddedResource Include="Forms\Fonts\FontelloIcons\css\animation.css" />
 	  <EmbeddedResource Include="Forms\Fonts\FontelloIcons\css\fontello-codes.css" />
 	  <EmbeddedResource Include="Forms\Fonts\FontelloIcons\css\fontello-embedded.css" />
@@ -75,21 +76,24 @@
 	  <EmbeddedResource Include="Forms\Fonts\FontelloIcons\css\fontello-ie7.css" />
 	  <EmbeddedResource Include="Forms\Fonts\FontelloIcons\css\fontello.css" />
 	  <EmbeddedResource Include="Forms\Fonts\FontelloIcons\font\kiticons4.ttf" />
-	  <EmbeddedResource Include="Forms\Pages\OtgCodeBarSacnnerDetector\OtgCodeBarScannerDetectorPage.xaml">
+	  <!--<EmbeddedResource Include="Forms\Pages\OtgCodeBarSacnnerDetector\OtgCodeBarScannerDetectorPage.xaml">
 	    <SubType>Designer</SubType>
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
+	  </EmbeddedResource>-->
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="Acr.UserDialogs.Maui" Version="9.2.1" />
 	  <PackageReference Include="AsyncAwaitBestPractices" Version="9.0.0" />
 	  <PackageReference Include="AsyncAwaitBestPractices.MVVM" Version="9.0.0" />
-	  <PackageReference Include="ClosedXML" Version="0.104.2" />
+	  <PackageReference Include="ClosedXML" Version="0.105.0" />
 	  <PackageReference Include="CommunityToolkit.Maui" Version="11.2.0" />
 	  <PackageReference Include="CommunityToolkit.Maui.Core" Version="11.2.0" />
 	  <PackageReference Include="CommunityToolkit.Maui.Markup" Version="6.0.0" />
 	  <PackageReference Include="DeviceId" Version="6.9.0" />
 	  <PackageReference Include="FFImageLoading.Maui" Version="1.2.7" />
+	  <PackageReference Include="FreshMvvm.Maui" Version="0.0.4" />
+	  <PackageReference Include="KeyboardVisibilityListener-MAUI" Version="1.0.2" />
 	  <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.70" />
 	  <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.70" />
 	  <PackageReference Include="MoyskleyTech.ImageProcessing" Version="1.0.2" />
@@ -100,14 +104,20 @@
 	  <PackageReference Include="MoyskleyTech.ImageProcessing.TGACodec" Version="1.0.2" />
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	  <PackageReference Include="Serilog" Version="4.2.0" />
+	  <PackageReference Include="Serilog.Sinks.Async" Version="2.1.0" />
 	  <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
 	  <PackageReference Include="Serilog.Sinks.Debug" Version="3.0.0" />
+	  <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
 	  <PackageReference Include="SkiaSharp" Version="3.119.0" />
 	  <PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="3.119.0" />
 	  <PackageReference Include="SkiaSharp.Views.Maui.Controls.Compatibility" Version="2.88.9" />
 	  <PackageReference Include="TinyTypeContainer" Version="1.0.2" />
 	  <PackageReference Include="Xam.Plugin.DeviceInfo" Version="4.1.1" />
 	  <PackageReference Include="ZXing.Net" Version="0.16.10" />
+	  <PackageReference Include="ZXing.Net.Bindings.ImageSharp" Version="0.16.15" />
+	  <PackageReference Include="ZXing.Net.Bindings.OpenCV" Version="0.16.9" />
+	  <PackageReference Include="ZXing.Net.Bindings.SkiaSharp" Version="0.16.21" />
+	  <PackageReference Include="ZXing.Net.Bindings.ZKWeb.System.Drawing" Version="0.16.8" />
 	  <PackageReference Include="ZXing.Net.Maui" Version="0.4.0" />
 	  <PackageReference Include="ZXing.Net.Maui.Controls" Version="0.4.0" />
 	</ItemGroup>
@@ -127,5 +137,23 @@
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </Page>
 	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
+	  <PackageReference Include="ZXing.Net.Bindings.Android">
+	    <Version>0.16.10</Version>
+	  </PackageReference>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-ios'">
+	 
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="PancakeViewCompat">
+	    <HintPath>..\..\..\nuget\pancakeviewcompat\7.0.0\lib\net7.0-ios16.1\PancakeViewCompat.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
+
 
 </Project>

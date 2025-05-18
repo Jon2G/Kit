@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ZXing;
+﻿using ZXing;
 using ZXing.Net.Maui;
 using ZXing.Net.Maui.Controls;
 

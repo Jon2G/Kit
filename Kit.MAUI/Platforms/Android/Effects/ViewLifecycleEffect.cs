@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.Android;
+﻿using Microsoft.Maui.Controls.Platform;
 using View = Android.Views.View;
 using ViewLifecycleEffectBase = Kit.Forms.Effects.ViewLifecycleEffect;
 [assembly: ResolutionGroupName(ViewLifecycleEffectBase.EffectGroupName)]

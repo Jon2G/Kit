@@ -1,12 +1,9 @@
 ﻿using AsyncAwaitBestPractices.MVVM;
 using Kit.Extensions;
-using System;
+using Serilog.Events;
 using System.Collections;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using Xamarin.Forms;
-using Serilog.Events;
 namespace Kit.Forms.Controls.LogsViewer
 {
     public class LogViewerModel : IDisposable
@@ -16,7 +13,14 @@ namespace Kit.Forms.Controls.LogsViewer
         private ICommand _AlertLogCommand;
         public ICommand AlertLogCommand => _AlertLogCommand ??= new AsyncCommand<LogMsg>(AlertLog);
 
-        private Task AlertLog(LogMsg msg) => Acr.UserDialogs.UserDialogs.Instance.AlertAsync(msg.Text, msg.Level, "Ok");
+
+        private Task AlertLog(LogMsg msg)
+        {
+#if ANDROID || IOS  || MACCATALYST
+            Acr.UserDialogs.UserDialogs.Instance.AlertAsync(msg.Text, msg.Level, "Ok");
+#endif
+            throw new NotSupportedException("AlertLog is not supported on this platform.");
+        }
 
         private readonly object _syncLock = new object();
 

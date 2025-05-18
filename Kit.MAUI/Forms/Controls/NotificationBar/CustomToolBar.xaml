@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:Kit.Forms.Controls" 
-             xmlns:noti="clr-namespace:Kit.Forms.Controls.NotificationBar"
-             x:Class="Kit.Forms.Controls.NotificationBar.CustomToolBar" 
-             BindingContext="{Static noti:Notificaciones.Instance}"
-             BackgroundColor="{DynamicResource ToolbarDynamicColor}"   
-             x:DataType="noti:CustomToolBar"
-             x:Name="Me">
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:controls="clr-namespace:Kit.Forms.Controls" 
+                  xmlns:noti="clr-namespace:Kit.Forms.Controls.NotificationBar"
+                  x:Class="Kit.Forms.Controls.NotificationBar.CustomToolBar" 
+                  BindingContext="{x:Static noti:Notificaciones.Instance}"
+                  BackgroundColor="{DynamicResource ToolbarDynamicColor}"   
+                  x:DataType="noti:Notificaciones"
+                  x:Name="Me">
     <ContentView.Content>
         <StackLayout  Spacing="3" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
 

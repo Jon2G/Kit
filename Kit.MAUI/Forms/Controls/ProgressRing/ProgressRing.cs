@@ -1,4 +1,4 @@
-﻿using Xamarin.Forms;
+﻿
 
 namespace Kit.Forms.Controls
 {
@@ -105,7 +105,7 @@ namespace Kit.Forms.Controls
 
         public void StartProgressToAnimation()
         {
-            ViewExtensions.CancelAnimations(this);
+            this.CancelAnimations();
             var length = base.GetValue(AnimationLengthProperty);
 
             ProgressTo(AnimatedProgress, AnimationLength, AnimationEasing);

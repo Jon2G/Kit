@@ -1,6 +1,5 @@
 ﻿using Kit.Services.Web;
 using Newtonsoft.Json;
-using Serilog;
 
 namespace Kit
 {

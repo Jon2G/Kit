@@ -1,8 +1,5 @@
 ﻿using Kit.Forms.Services;
 using Kit.Services.Interfaces;
-using System.Threading.Tasks;
-using Xamarin.Essentials;
-using Xamarin.Forms;
 
 [assembly: Dependency(typeof(ClipboardService))]
 namespace Kit.Forms.Services

@@ -1,7 +1,5 @@
 ﻿using Kit.Dialogs;
 using Kit.Forms.Dialogs;
-using System.Threading.Tasks;
-using Xamarin.Forms;
 
 [assembly: Dependency(typeof(Dialogs))]
 
@@ -22,7 +20,7 @@ namespace Kit.Forms.Dialogs
         {
             if (string.IsNullOrEmpty(config.TitleBackground))
             {
-                config.TitleBackground = Color.Accent.ToHex();
+                config.TitleBackground = KnownColor.Accent.ToHex();
             }
             Login login = new Login(config);
             await login.ShowDialog();

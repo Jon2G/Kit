@@ -1,7 +1,8 @@
-﻿using System;
-using Android.OS;
+﻿using Android.OS;
 using Android.Print;
 using Java.IO;
+using FileNotFoundException = Java.IO.FileNotFoundException;
+using IOException = Java.IO.IOException;
 
 namespace Kit.Droid.Services
 {
@@ -55,12 +56,12 @@ namespace Kit.Droid.Services
             catch (FileNotFoundException ex)
             {
                 //Catch exception
-                Log.Logger.Error(ex,"?");
+                Log.Logger.Error(ex, "?");
             }
             catch (Exception e)
             {
                 //Catch exception
-                Log.Logger.Error(e,"?");
+                Log.Logger.Error(e, "?");
             }
             finally
             {

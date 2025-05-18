@@ -1,11 +1,9 @@
-﻿using System;
-using CoreGraphics;
-using Foundation;
+﻿using CoreGraphics;
 using Kit.Forms.Controls;
 using Kit.iOS.Renders;
+using Microsoft.Maui.Controls.Compatibility;
+using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
 using UIKit;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(ProgressRing), typeof(ProgressRingRenderer))]
 namespace Kit.iOS.Renders
@@ -30,11 +28,11 @@ namespace Kit.iOS.Renders
             {
                 _sizeChanged = false;
 
-                nfloat width = Bounds.Width;
-                nfloat height = Bounds.Height;
-                var size = (float)Math.Min(width, height);
+                //nfloat width = WindowInsetsAnimation.Bounds.Width;
+                //nfloat height = WindowInsetsAnimation.Bounds.Height;
+                //var size = (float)Math.Min(width, height);
 
-                _radius = (size / 2f) - ((float)lineWidth / 2f);
+                //_radius = (size / 2f) - ((float)lineWidth / 2f);
             }
 
             return _radius.Value;
@@ -54,8 +52,9 @@ namespace Kit.iOS.Renders
                 var backColor = progressRing.RingBaseColor.ToUIColor();
                 var frontColor = progressRing.RingProgressColor.ToUIColor();
 
-                DrawProgressRing(g, Bounds.GetMidX(), Bounds.GetMidY(), progress, lineWidth, radius, backColor, frontColor);
-            };
+                //DrawProgressRing(g, WindowInsetsAnimation.Bounds.GetMidX(), WindowInsetsAnimation.Bounds.GetMidY(), progress, lineWidth, radius, backColor, frontColor);
+            }
+            ;
         }
 
         // TODO Optimize circle drawing by removing allocation of CGPath

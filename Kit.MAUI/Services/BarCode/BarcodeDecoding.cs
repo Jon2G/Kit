@@ -3,7 +3,6 @@ using ImageProcessing.JPEGCodec;
 using ImageProcessing.PNGCodec;
 using ImageProcessing.TGACodec;
 using MoyskleyTech.ImageProcessing.Image;
-using Serilog;
 using BarcodeFormat = ZXing.BarcodeFormat;
 using BinaryBitmap = ZXing.BinaryBitmap;
 using DecodeHintType = ZXing.DecodeHintType;

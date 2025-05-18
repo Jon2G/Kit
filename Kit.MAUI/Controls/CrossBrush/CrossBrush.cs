@@ -22,7 +22,7 @@
         public abstract void Apply();
         public abstract void LoadFromResource();
 
-        public CrossBrush<B, C> Darken(CrossBrush<B, C> Brush, double correctionFactor = -0.3)
+        public CrossBrush<B, C> Darken(CrossBrush<B, C> Brush, float correctionFactor = -0.3f)
         {
             for (int i = 0; i < Brush.Stops.Count; i++)
             {

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Reflection;
-using Xamarin.Forms;
 
 // ReSharper disable once CheckNamespace
 namespace Kit.Forms
@@ -11,7 +9,7 @@ namespace Kit.Forms
         public static string GetBindingPath(this BindableObject self, BindableProperty property)
         {
             BindingBase binding = GetBinding(self, property);
-            if (binding is Xamarin.Forms.Internals.TypedBindingBase)
+            if (binding is Microsoft.Maui.Controls.Binding)
             {
                 var _handlersField = binding.GetType().GetField("_handlers", BindingFlags.Instance | BindingFlags.NonPublic);
                 if (_handlersField is not null)

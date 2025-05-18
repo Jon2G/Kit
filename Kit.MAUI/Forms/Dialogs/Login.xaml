@@ -1,35 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pages:BasePopUp  xmlns:pages="clr-namespace:Kit.Forms.Pages"
-                  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                  xmlns:dialogs="clr-namespace:Kit.Dialogs;assembly=Kit"
-                  xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-                  xmlns:converters="clr-namespace:Kit.Forms.Converters"
-                  x:Class="Kit.Forms.Dialogs.Login"
-                  x:DataType="dialogs:LoginConfig">
+<pages:BasePopUp
+    x:Class="Kit.Forms.Dialogs.Login"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:Kit.Forms.Converters"
+    xmlns:dialogs="clr-namespace:Kit.Dialogs;assembly=Kit.MAUI"
+    xmlns:pages="clr-namespace:Kit.Forms.Pages"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    x:DataType="dialogs:LoginConfig">
     <pages:BasePopUp.Resources>
         <converters:StringNullOrEmptyBoolConverter x:Key="StringNullOrEmptyBoolConverter" IsReversed="True" />
     </pages:BasePopUp.Resources>
 
-    <yummy:PancakeView VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Margin="10">
-        <StackLayout Spacing="0" Padding="0">
-            <StackLayout HeightRequest="40" BackgroundColor="{Binding TitleBackground}">
-                <Label Text="{Binding Title}"  VerticalOptions="Center" VerticalTextAlignment="Center"
-                   HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" Margin="3" Padding="3"
-                       FontAttributes="Bold" FontSize="18" TextColor="White" />
+    <yummy:PancakeView
+        Margin="10"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="CenterAndExpand">
+        <StackLayout Padding="0" Spacing="0">
+            <StackLayout BackgroundColor="{Binding TitleBackground}" HeightRequest="40">
+                <Label
+                    Margin="3"
+                    Padding="3"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding Title}"
+                    TextColor="White"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center" />
             </StackLayout>
 
-            <StackLayout Padding="10" Margin="0">
+            <StackLayout Margin="0" Padding="10">
 
-                <Label Text="{Binding Message}" FontSize="16"
-                       IsVisible="{Binding Message,Converter={x:StaticResource StringNullOrEmptyBoolConverter}}" />
+                <Label
+                    FontSize="16"
+                    IsVisible="{Binding Message, Converter={x:StaticResource StringNullOrEmptyBoolConverter}}"
+                    Text="{Binding Message}" />
 
-                <Entry  Placeholder="{Binding UserPlaceholder}" Text="{Binding User}" />
-                <Entry IsPassword="True" Placeholder="{Binding PasswordPlaceholder}" Text="{Binding Password}" />
+                <Entry Placeholder="{Binding UserPlaceholder}" Text="{Binding User}" />
+                <Entry
+                    IsPassword="True"
+                    Placeholder="{Binding PasswordPlaceholder}"
+                    Text="{Binding Password}" />
 
-                <StackLayout Margin="3" Padding="0" Orientation="Horizontal">
-                    <Button Text="{Binding CancelText}" HorizontalOptions="FillAndExpand" Clicked="Cancel" Margin="0,5" />
-                    <Button Text="{Binding OkText}" HorizontalOptions="FillAndExpand" Clicked="OnOk" Margin="0,5" />
+                <StackLayout
+                    Margin="3"
+                    Padding="0"
+                    Orientation="Horizontal">
+                    <Button
+                        Margin="0,5"
+                        Clicked="Cancel"
+                        HorizontalOptions="FillAndExpand"
+                        Text="{Binding CancelText}" />
+                    <Button
+                        Margin="0,5"
+                        Clicked="OnOk"
+                        HorizontalOptions="FillAndExpand"
+                        Text="{Binding OkText}" />
                 </StackLayout>
             </StackLayout>
         </StackLayout>

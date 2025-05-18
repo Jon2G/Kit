@@ -1,14 +1,8 @@
 ﻿using Kit.Enums;
 using Kit.Services.Interfaces;
-using System;
 using System.ComponentModel;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
-using System.Threading;
-using System.Threading.Tasks;
-using Xamarin.Forms;
-using Xamarin.Forms.Internals;
 
 namespace Kit.Forms.Pages
 {
@@ -144,15 +138,14 @@ namespace Kit.Forms.Pages
 
         public BasePage()
         {
-            this.Visual = new VisualMarker.MaterialVisual();
-            LockedOrientation = DeviceOrientation.Other;
+            LockedOrientation = DeviceDisplay.Current.MainDisplayInfo.Orientation;
             IsModalLocked = false;
             InitOrientationPage();
         }
 
-        public DeviceOrientation LockedOrientation { get; private set; }
+        public DisplayOrientation LockedOrientation { get; private set; }
 
-        protected BasePage LockOrientation(DeviceOrientation Orientation)
+        protected BasePage LockOrientation(DisplayOrientation Orientation)
         {
             LockedOrientation = Orientation;
             if (Device.RuntimePlatform == Device.Android)
@@ -190,11 +183,11 @@ namespace Kit.Forms.Pages
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            if (LockedOrientation != DeviceOrientation.Other)
+            if (LockedOrientation != DisplayOrientation.Unknown)
             {
                 if (Device.RuntimePlatform == Device.Android)
                 {
-                    MessagingCenter.Send(this, nameof(DeviceOrientation.Other));
+                    MessagingCenter.Send(this, nameof(DisplayOrientation.Unknown));
                 }
                 else if (Device.RuntimePlatform == Device.iOS)
                 {
@@ -212,11 +205,11 @@ namespace Kit.Forms.Pages
 
         protected override bool OnBackButtonPressed()
         {
-            if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.LastOrDefault() is BasePopUp popUp)
-            {
-                popUp.BackButtonPressed();
-                return true;
-            }
+            //if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.LastOrDefault() is BasePopUp popUp)
+            //{
+            //    popUp.BackButtonPressed();
+            //    return true;
+            //}
             if (IsModalLocked)
             {
                 return true;

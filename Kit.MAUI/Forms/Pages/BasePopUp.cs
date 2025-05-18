@@ -1,31 +1,17 @@
-﻿using AsyncAwaitBestPractices;
+﻿using CommunityToolkit.Maui.Views;
 using Kit.Services.Interfaces;
-using Rg.Plugins.Popup.Animations;
-using Rg.Plugins.Popup.Enums;
-using Rg.Plugins.Popup.Pages;
-using Rg.Plugins.Popup.Services;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using Xamarin.Forms;
 
 namespace Kit.Forms.Pages
 {
-    public class BasePopUp : PopupPage, ICrossWindow
+    public class BasePopUp : Popup, ICrossWindow
     {
-        public bool IsShowed
-        {
-            get
-            {
-                return Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack?.Any(x => x == this) ?? false;
-            }
-        }
+
         #region ICrossWindow
 
         Task ICrossWindow.Close() => Close();
 
-        Task ICrossWindow.Show() => Show();
+        Task ICrossWindow.Show() => Show(Microsoft.Maui.Controls.Application.Current.MainPage);
 
         Task ICrossWindow.ShowDialog() => ShowDialog();
 
@@ -36,36 +22,33 @@ namespace Kit.Forms.Pages
 
         public BasePopUp()
         {
-            this.Background = Color.Transparent;
-            this.BackgroundColor = Color.Transparent;
+            //this.Background = Color.Transparent;
+            //this.BackgroundColor = Color.Transparent;
             this.ShowDialogCallback = new AutoResetEvent(false);
-            this.Visual = VisualMarker.Material;
+            //this.Visual = VisualMarker.Material;
         }
 
-        public virtual async Task<BasePopUp> ShowDialog()
+        public virtual async Task<BasePopUp> ShowDialog(Page page = null)
         {
-            await Show();
+            await Show(page);
             await Task.Run(() => this.ShowDialogCallback.WaitOne());
             return this;
         }
 
-        public virtual async Task<BasePopUp> Show()
+        public virtual async Task<BasePopUp> Show(Page page)
         {
-            ScaleAnimation scaleAnimation = new ScaleAnimation
+            page ??= Microsoft.Maui.Controls.Application.Current.MainPage;
+            return await page.ShowPopupAsync(this).ContinueWith(t =>
             {
-                PositionIn = MoveAnimationOptions.Right,
-                PositionOut = MoveAnimationOptions.Left
-            };
-            this.Animation = scaleAnimation;
-            await PopupNavigation.Instance.PushAsync(this, true);
-            return this;
+                return this;
+            });
         }
 
         public virtual async Task<BasePopUp> Close()
         {
             await Task.Yield();
             Closing();
-            PopupNavigation.Instance.RemovePageAsync(this, true).SafeFireAndForget();
+            await CloseAsync(this);
             this.ShowDialogCallback.Set();
             ClosedCommad?.Execute(this);
             return this;
@@ -76,48 +59,49 @@ namespace Kit.Forms.Pages
         }
 
         private bool IsModalLocked { get; set; }
+        public bool IsVisible { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public BasePopUp LockModal()
         {
             this.IsModalLocked = !this.IsModalLocked;
-            this.CloseWhenBackgroundIsClicked = !this.IsModalLocked;
+            this.CanBeDismissedByTappingOutsideOfPopup = !this.IsModalLocked;
             return this;
         }
 
-        protected override bool OnBackButtonPressed()
-        {
-            if (this.IsModalLocked)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        //protected override bool OnBackButtonPressed()
+        //{
+        //    if (this.IsModalLocked)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
 
-        public async void BackButtonPressed()
-        {
-            if (!OnBackButtonPressed())
-            {
-                await this.Close();
-            }
-        }
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            CrossOnAppearing();
-        }
+        //public async void BackButtonPressed()
+        //{
+        //    if (!OnBackButtonPressed())
+        //    {
+        //        await this.Close();
+        //    }
+        //}
+        //protected override void OnAppearing()
+        //{
+        //    base.OnAppearing();
+        //    CrossOnAppearing();
+        //}
         public virtual void CrossOnAppearing()
         {
 
         }
         protected override void OnPropertyChanged(string propertyName = null)
         {
-            if (propertyName == "Background" || propertyName == "BackgroundColor")
-            {
-                this.Background = null;
-            }
+            //if (propertyName == "Background" || propertyName == "BackgroundColor")
+            //{
+            //    this.Background = null;
+            //}
             base.OnPropertyChanged(propertyName);
         }
     }

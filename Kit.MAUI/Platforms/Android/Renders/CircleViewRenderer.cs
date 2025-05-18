@@ -1,10 +1,10 @@
-﻿using Android.Content;
-using Android.Graphics;
-using Android.Util;
+﻿using Android.Util;
 using Kit.Droid.Renders;
 using Kit.Forms.Controls;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.Android;
+using Microsoft.Maui.Controls.Compatibility;
+using Microsoft.Maui.Controls.Compatibility.Platform.Android;
+using Microsoft.Maui.Controls.Platform;
+using Path = Android.Graphics.Path;
 
 [assembly: ExportRenderer(typeof(CircleView), typeof(CircleViewRenderer))]
 namespace Kit.Droid.Renders
@@ -12,11 +12,11 @@ namespace Kit.Droid.Renders
     public class CircleViewRenderer : BoxRenderer
     {
         private float _cornerRadius;
-        private RectF _bounds;
+        private Android.Graphics.RectF _bounds;
         private Path _path;
         public static void Initialize() { }
 
-        public CircleViewRenderer(Context context) : base(context)
+        public CircleViewRenderer(Android.Content.Context context) : base(context)
         {
 
         }
@@ -40,7 +40,7 @@ namespace Kit.Droid.Renders
             base.OnSizeChanged(w, h, oldw, oldh);
             if (w != oldw && h != oldh)
             {
-                _bounds = new RectF(0, 0, w, h);
+                _bounds = new Android.Graphics.RectF(0, 0, w, h);
             }
 
             _path = new Path();
@@ -49,7 +49,7 @@ namespace Kit.Droid.Renders
             _path.Close();
         }
 
-        public override void Draw(Canvas canvas)
+        public override void Draw(Android.Graphics.Canvas canvas)
         {
             canvas.Save();
             canvas.ClipPath(_path);

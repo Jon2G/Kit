@@ -1,12 +1,11 @@
 ﻿using Android.App;
-using Android.Graphics;
+using Android.Content;
 using Android.Views;
 using Android.Views.InputMethods;
-using System;
-using Android.Content;
 using Java.Interop;
 using Java.Util;
-using Android.Runtime;
+using Rect = Android.Graphics.Rect;
+using View = Android.Views.View;
 
 namespace Kit.Droid.Utils
 {
@@ -121,7 +120,7 @@ namespace Kit.Droid.Utils
 
         public void SetJniIdentityHashCode(int value)
         {
-            
+
         }
 
         public void SetPeerReference(JniObjectReference reference)
@@ -134,7 +133,7 @@ namespace Kit.Droid.Utils
             throw new NotImplementedException();
         }
 
-      
+
         public void DisposeUnlessReferenced()
         {
             throw new NotImplementedException();

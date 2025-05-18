@@ -1,12 +1,12 @@
 ﻿using Kit.Forms.Pages;
-using Xamarin.Forms;
+
 namespace Kit.Forms
 {
-    public abstract class Application : Xamarin.Forms.Application
+    public abstract class Application : Microsoft.Maui.Controls.Application
     {
         protected override void OnSleep()
         {
-            OnSleep(Xamarin.Forms.Application.Current.MainPage);
+            OnSleep(Microsoft.Maui.Controls.Application.Current.MainPage);
         }
         private void OnSleep(Page page)
         {

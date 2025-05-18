@@ -1,7 +1,7 @@
 ﻿using DeviceId;
 using Plugin.DeviceInfo.Abstractions;
 using IDeviceInfo = Plugin.DeviceInfo.Abstractions.IDeviceInfo;
-using Plugin.DeviceInfo.Abstractions;
+
 namespace Kit.Services.Interfaces
 {
     public class DeviceInfo

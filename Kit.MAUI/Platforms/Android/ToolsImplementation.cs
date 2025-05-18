@@ -1,17 +1,14 @@
-﻿using System;
+﻿using Kit.Droid.Services;
 using Kit.Enums;
-using Kit.Droid.Services;
-using Serilog;
 using Kit.Forms.Services;
-using Kit.Services.Interfaces;
-using Kit.Dialogs;
-using Kit.Services.BarCode;
+using Serilog;
+using TinyTypeContainer;
 
 namespace Kit.Droid
 {
     public class ToolsImplementation : AbstractTools
     {
-        public override string TemporalPath => Xamarin.Essentials.FileSystem.CacheDirectory;
+        public override string TemporalPath => FileSystem.Current.CacheDirectory;
         public override RuntimePlatform RuntimePlatform => RuntimePlatform.Android;
         public MainActivity MainActivity { get; private set; }
 
@@ -25,13 +22,13 @@ namespace Kit.Droid
 
         public override AbstractTools Init()
         {
-            Kit.Tools.Container.Register<ISynchronizeInvoke, SynchronizeInvoke>();
-            Kit.Tools.Container.Register<IDialogs, Kit.Forms.Dialogs.Dialogs>();
-            Kit.Tools.Container.Register<IScreenManager, ScreenManagerService>();
-            Kit.Tools.Container.Register<Kit.Controls.CrossImage.CrossImageExtensions, Kit.Forms.Controls.CrossImage.CrossImageExtensions>();
-            Kit.Tools.Container.Register<IBarCodeBuilder, BarCodeBuilder>();
-            Kit.Tools.Container.Register<IClipboardService, ClipboardService>();
-            Kit.Tools.Container.Register<Plugin.DeviceInfo.Abstractions.IDeviceInfo, Plugin.DeviceInfo.DeviceInfoImplementation>();
+            Container.Register(new SynchronizeInvoke());
+            Container.Register(new Kit.Forms.Dialogs.Dialogs());
+            Container.Register<ScreenManagerService>(new());
+            Container.Register<Kit.Forms.Controls.CrossImage.CrossImageExtensions>(new());
+            Container.Register<BarCodeBuilder>(new());
+            Container.Register<ClipboardService>(new());
+            Container.Register<Plugin.DeviceInfo.DeviceInfoImplementation>(new());
             Log.Init((log) =>
             {
                 return (new LoggerConfiguration()
@@ -43,7 +40,7 @@ namespace Kit.Droid
                     // .Enrich.WithMemoryUsage()
                     //.Enrich.WithThreadId()
                     // Write entries to Android log (Nuget package Serilog.Sinks.Xamarin)
-                    .WriteTo.Async(x => x.AndroidLog())
+                    //.WriteTo.Async(x => x.AndroidLog())
                     // Create a custom logger in order to set another limit,
                     // particularly, any logs from Information level will also be written into a rolling file
                     .WriteTo.Async(x => x.Logger(config =>

@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Kit.Model;
+using System.ComponentModel;
 using System.Windows.Input;
-using Kit.Model;
-using Xamarin.Forms;
 
 namespace Kit.Forms.Controls.NotificationBar
 {
@@ -32,7 +31,7 @@ namespace Kit.Forms.Controls.NotificationBar
             this.Imagen = Icono;
             this.Color = Color;
             this.Texto = Texto;
-            this.Command = new Xamarin.Forms.Command<object>(x => Click());
+            this.Command = new Command<object>(x => Click());
         }
 
         private bool Click()

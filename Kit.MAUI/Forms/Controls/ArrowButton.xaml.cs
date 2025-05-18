@@ -1,11 +1,11 @@
-﻿using System;
+﻿using CommunityToolkit.Maui.Behaviors;
 using System.ComponentModel;
 using System.Windows.Input;
 
 namespace Kit.Forms.Controls
 {
     [Preserve(AllMembers = true)]
-    [XamlCompilation(XamlCompilationOptions.Compile), FFImageLoading.Preserve()]
+    [XamlCompilation(XamlCompilationOptions.Skip), FFImageLoading.Preserve()]
     public partial class ArrowButton
     {
 
@@ -20,7 +20,24 @@ namespace Kit.Forms.Controls
                 {
                     Color color = (Color)n;
                     arrow.PressedBackgroundColor = color;
-                    TouchEffect.SetPressedBackgroundColor(arrow, color);
+
+                    var a = new TouchBehavior();
+
+                    BindableProperty.CreateAttached(
+                        propertyName: nameof(TouchBehavior.PressedBackgroundColorProperty),
+                        returnType: typeof(Color),
+                        declaringType: typeof(ArrowButton),
+                        defaultValue: Colors.LightGray, BindingMode.OneWay,
+                        propertyChanged: (e, o, n) =>
+                        {
+                            if (e is ArrowButton arrow)
+                            {
+                                Color color = (Color)n;
+                                arrow.PressedBackgroundColor = color;
+                            }
+                        });
+                    //TouchBehavior.PressedBackgroundColorProperty
+                    //TouchEffect.SetPressedBackgroundColor(arrow, color);
                 }
             });
 
@@ -30,7 +47,7 @@ namespace Kit.Forms.Controls
             set
             {
                 SetValue(PressedBackgroundColorProperty, value);
-                TouchEffect.SetPressedBackgroundColor(this, value);
+                //TouchEffect.SetPressedBackgroundColor(this, value);
                 OnPropertyChanged();
             }
         }
@@ -45,7 +62,7 @@ namespace Kit.Forms.Controls
                 {
                     Color color = (Color)n;
                     arrow.BackgroundColor = color;
-                    TouchEffect.SetNormalBackgroundColor(arrow, color);
+                    //TouchEffect.SetNormalBackgroundColor(arrow, color);
                 }
             });
 
@@ -56,7 +73,7 @@ namespace Kit.Forms.Controls
             {
                 base.SetValue(BackgroundColorProperty, value);
                 OnPropertyChanged();
-                TouchEffect.SetNormalBackgroundColor(this, value);
+                //TouchEffect.SetNormalBackgroundColor(this, value);
             }
         }
 
@@ -92,7 +109,7 @@ namespace Kit.Forms.Controls
 
         public static readonly BindableProperty ArrowColorProperty = BindableProperty.Create(
             propertyName: nameof(ArrowColor), returnType: typeof(Color),
-            declaringType: typeof(ArrowButton), defaultValue: Colors.Accent, BindingMode.OneWay,
+            declaringType: typeof(ArrowButton), defaultValue: KnownColor.Accent, BindingMode.OneWay,
             propertyChanged: (e, o, n) =>
             {
                 if (e is ArrowButton arrow) arrow.ArrowColor = (Color)n;
@@ -415,8 +432,8 @@ namespace Kit.Forms.Controls
         {
             this.TouchedCommand = new AsyncFeedbackCommand(() => this.Command?.Execute(this.CommandParameter));
             InitializeComponent();
-            TouchEffect.SetNormalBackgroundColor(this, this.BackgroundColor);
-            TouchEffect.SetCommand(this, TouchedCommand);
+            //TouchEffect.SetNormalBackgroundColor(this, this.BackgroundColor);
+            //TouchEffect.SetCommand(this, TouchedCommand);
             //xct: TouchEffect.Command = "{Binding TouchedCommand,Source={x:Reference arrow}}"
         }
     }

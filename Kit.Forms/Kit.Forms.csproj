@@ -58,10 +58,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Kit\Kit.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="..\toolbox.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>

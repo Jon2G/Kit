@@ -1,7 +1,5 @@
-﻿using Kit.Forms.Extensions;
-using System;
-using System.Threading.Tasks;
-using AsyncAwaitBestPractices.MVVM;
+﻿using AsyncAwaitBestPractices.MVVM;
+using Kit.Forms.Extensions;
 
 namespace Kit.Forms
 {

@@ -1,7 +1,4 @@
-﻿using System.IO;
-using System.Threading.Tasks;
-
-namespace Kit.Forms.Services.Interfaces
+﻿namespace Kit.Forms.Services.Interfaces
 {
     public interface IImageCompressService
     {

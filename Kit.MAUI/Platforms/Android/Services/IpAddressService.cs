@@ -2,10 +2,6 @@
 using Java.Util;
 using Kit.Droid.Services;
 using Kit.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Xamarin.Forms;
 
 [assembly: Dependency(typeof(IpAddressService))]
 namespace Kit.Droid.Services

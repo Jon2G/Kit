@@ -1,8 +1,6 @@
-﻿using System.Threading.Tasks;
-using Kit.Dialogs;
+﻿using Kit.Dialogs;
 using Kit.Enums;
 using Kit.Forms.Dialogs;
-using Xamarin.Forms;
 
 [assembly: Dependency(typeof(CustomMessageBox))]
 
@@ -12,24 +10,34 @@ namespace Kit.Forms.Dialogs
     {
         public async Task<CustomMessageBoxResult> Show(string messageBoxText)
         {
+#if ANDROID || IOS  || MACCATALYST
             await Acr.UserDialogs.UserDialogs.Instance.AlertAsync(messageBoxText);
             return CustomMessageBoxResult.OK;
+#endif
+            throw new NotSupportedException();
         }
 
         public async Task<CustomMessageBoxResult> Show(string messageBoxText, string caption)
         {
+#if ANDROID || IOS  || MACCATALYST
             await Acr.UserDialogs.UserDialogs.Instance.AlertAsync(messageBoxText, caption);
             return CustomMessageBoxResult.OK;
+#endif
+            throw new NotSupportedException();
         }
 
         public async Task<CustomMessageBoxResult> Show(string messageBoxText, string caption, CustomMessageBoxButton button)
         {
+#if ANDROID || IOS  || MACCATALYST
             await Acr.UserDialogs.UserDialogs.Instance.AlertAsync(messageBoxText, caption, "Ok");
             return CustomMessageBoxResult.OK;
+#endif
+            throw new NotSupportedException();
         }
 
         public async Task<CustomMessageBoxResult> Show(string messageBoxText, string caption, CustomMessageBoxButton button, CustomMessageBoxImage icon)
         {
+#if ANDROID || IOS || MACCATALYST
             string text = null;
             switch (button)
             {
@@ -39,18 +47,26 @@ namespace Kit.Forms.Dialogs
             }
             await Acr.UserDialogs.UserDialogs.Instance.AlertAsync(messageBoxText, caption, text);
             return CustomMessageBoxResult.OK;
+#endif
+            throw new NotSupportedException();
         }
 
         public async Task<CustomMessageBoxResult> ShowOK(string messageBoxText, string caption, string okButtonText)
         {
+#if ANDROID || IOS  || MACCATALYST
             await Acr.UserDialogs.UserDialogs.Instance.AlertAsync(messageBoxText, caption, okButtonText);
             return CustomMessageBoxResult.OK;
+#endif
+            throw new NotSupportedException();
         }
 
         public async Task<CustomMessageBoxResult> ShowOK(string messageBoxText, string caption, string okButtonText, CustomMessageBoxImage icon)
         {
+#if ANDROID || IOS  || MACCATALYST
             await Acr.UserDialogs.UserDialogs.Instance.AlertAsync(messageBoxText, caption, okButtonText);
             return CustomMessageBoxResult.OK;
+#endif
+            throw new NotSupportedException();
         }
 
         public async Task<CustomMessageBoxResult> ShowOKCancel(string messageBoxText, string caption, string okButtonText, string cancelButtonText)

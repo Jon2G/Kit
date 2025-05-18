@@ -1,5 +1,4 @@
-﻿using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿
 
 namespace Kit.Forms.Pages
 {
@@ -14,7 +13,7 @@ namespace Kit.Forms.Pages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            this.Model.Init(BeginView,CenterView,EndView);
+            this.Model.Init(BeginView, CenterView, EndView);
         }
     }
 }

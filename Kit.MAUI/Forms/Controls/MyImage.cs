@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.IO;
 using FFImageLoading.Maui;
 
 namespace Kit.Forms.Controls

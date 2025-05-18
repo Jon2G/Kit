@@ -1,6 +1,6 @@
-﻿using System.Diagnostics;
-using SkiaSharp.Views.Forms;
-using Xamarin.Forms;
+﻿using SkiaSharp.Views.Maui;
+using SkiaSharp.Views.Maui.Controls;
+using System.Diagnostics;
 
 namespace Kit.Forms.Controls.ActivityIndicator
 {

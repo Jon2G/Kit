@@ -1,5 +1,4 @@
-﻿using System;
-using Android.App;
+﻿using Android.App;
 using Android.Appwidget;
 using Android.Content;
 using Java.Lang;
@@ -9,7 +8,7 @@ namespace Kit.Droid
 {
     public static class ContextExtensions
     {
-        public static void UpdateWidget(this Context context,Type MyAppWidgetProvider)
+        public static void UpdateWidget(this Context context, Type MyAppWidgetProvider)
         {
             Java.Lang.Class WidgetProviderType = Java.Lang.Class.FromType(MyAppWidgetProvider);
             int[] ids = AppWidgetManager.GetInstance(context)
@@ -28,7 +27,7 @@ namespace Kit.Droid
         {
             var nightModeFlags = context.Resources?.Configuration?.UiMode ?? Android.Content.Res.UiMode.TypeNormal
                 & Android.Content.Res.UiMode.NightMask;
-           return nightModeFlags.HasFlag(Android.Content.Res.UiMode.NightYes);
+            return nightModeFlags.HasFlag(Android.Content.Res.UiMode.NightYes);
         }
         public static bool IsServiceRunning(this Context context, Type serviceClass)
         {

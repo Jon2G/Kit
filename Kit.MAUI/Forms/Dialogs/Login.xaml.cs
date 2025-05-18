@@ -1,12 +1,11 @@
 ﻿using AsyncAwaitBestPractices;
 using Kit.Dialogs;
-using System;
-using Xamarin.Forms.Xaml;
+using Kit.Forms.Pages;
 
 namespace Kit.Forms.Dialogs
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Login
+    public partial class Login : BasePopUp
     {
         public LoginConfig Config { get; }
         public bool Ok { get; private set; }

@@ -1,13 +1,10 @@
 ﻿using Android.Graphics;
 using Plugin.CurrentActivity;
-using System.IO;
-using System.Threading.Tasks;
-using Kit.Droid.Services;
-using Kit.Services.Interfaces;
 using Bitmap = Android.Graphics.Bitmap;
+using IScreenshot = Kit.Services.Interfaces.IScreenshot;
 using View = Android.Views.View;
 
-[assembly: Xamarin.Forms.Dependency(typeof(Screenshot))]
+[assembly: Dependency(typeof(Microsoft.Maui.Media.Screenshot))]
 namespace Kit.Droid.Services
 {
     public class Screenshot : IScreenshot
@@ -22,10 +19,10 @@ namespace Kit.Droid.Services
                 rootView.Height,
                 Android.Graphics.Bitmap.Config.Argb8888))
             {
-                Canvas canvas = new (screenshot);
+                Canvas canvas = new(screenshot);
                 rootView.Draw(canvas);
 
-                using (MemoryStream stream = new ())
+                using (MemoryStream stream = new())
                 {
                     screenshot.Compress(Android.Graphics.Bitmap.CompressFormat.Png, 90, stream);
                     return stream.ToArray();

@@ -1,7 +1,9 @@
-﻿using Kit.iOS.Renders;
+﻿
 using Kit.Forms.Controls;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.iOS;
+using Kit.iOS.Renders;
+using Microsoft.Maui.Controls.Compatibility;
+using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
+using Microsoft.Maui.Controls.Platform;
 
 [assembly: ExportRenderer(typeof(CircleView), typeof(CircleViewRenderer))]
 namespace Kit.iOS.Renders

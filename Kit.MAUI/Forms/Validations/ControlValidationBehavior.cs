@@ -1,10 +1,8 @@
-﻿using System;
+﻿using Microsoft.Maui.Controls.Compatibility;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Reflection;
-using Xamarin.Forms;
-using StackLayout = Xamarin.Forms.StackLayout;
+using StackLayout = Microsoft.Maui.Controls.StackLayout;
 
 namespace Kit.Forms.Validations
 {
@@ -93,11 +91,11 @@ namespace Kit.Forms.Validations
         {
             Device.BeginInvokeOnMainThread(() =>
             {
-                Xamarin.Forms.Layout<View> OriginalParent = View.Parent as Xamarin.Forms.Layout<View>;
+                Layout<View> OriginalParent = View.Parent as Layout<View>;
                 int Index = OriginalParent.Children.FindIndexOf(x => x == View);
                 Label alertLabel = new Label()
                 {
-                    TextColor = Color.Red,
+                    TextColor = Colors.Red,
                     FontSize = 14
                 };
                 alertLabel.SetValue(Label.BindingContextProperty, this);

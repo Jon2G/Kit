@@ -6,11 +6,9 @@ using Android.Content.Res;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
-using FFImageLoading.Forms.Platform;
 using Kit.Forms.Services;
 using Kit.Forms.Services.Interfaces;
 using Plugin.CurrentActivity;
-using System;
 using System.Net;
 
 [assembly: UsesFeature("android.hardware.camera", Required = false)]
@@ -71,27 +69,27 @@ namespace Kit.Droid.Services
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            global::Xamarin.Forms.Forms.SetFlags("Shapes_Experimental", "DragAndDrop_Experimental");
-            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            global::Xamarin.Forms.FormsMaterial.Init(this, savedInstanceState);
-            CachedImageRenderer.InitImageViewHandler();
-            CachedImageRenderer.Init(false);
+            //global::Xamarin.Forms.Forms.SetFlags("Shapes_Experimental", "DragAndDrop_Experimental");
+            //Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            //global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            //global::Xamarin.Forms.FormsMaterial.Init(this, savedInstanceState);
+            //CachedImageRenderer.InitImageViewHandler();
+            //CachedImageRenderer.Init(false);
             UserDialogs.Init(this);
-            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            //Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
-            Rg.Plugins.Popup.Popup.Init(this);
+            //Rg.Plugins.Popup.Popup.Init(this);
             Kit.Droid.Tools.Init(this, savedInstanceState);
-            Forms9Patch.Droid.Settings.Initialize(this);
-            TinyIoC.TinyIoCContainer.Current.Register<IUpdateWidget>(this);
-            TinyIoC.TinyIoCContainer.Current.Register<IImageCompressService>(new ImageCompressService());
+            //Forms9Patch.Droid.Settings.Initialize(this);
+            //TinyIoC.TinyIoCContainer.Current.Register<IUpdateWidget>(this);
+            //TinyIoC.TinyIoCContainer.Current.Register<IImageCompressService>(new ImageCompressService());
             Instance = this; //ImagePicker
             ServicePointManager.ServerCertificateValidationCallback += (o, cert, chain, errors) => true;
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
-            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            //Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 

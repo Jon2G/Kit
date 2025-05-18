@@ -1,9 +1,6 @@
-﻿using Forms9Patch;
-using Kit.Forms.Extensions;
+﻿using Kit.Forms.Extensions;
 using Kit.Model;
-using System;
 using System.Text;
-using Xamarin.Forms;
 
 namespace Kit.Forms.Services
 {
@@ -68,7 +65,7 @@ namespace Kit.Forms.Services
             {
                 this.IsEnabled = false;
             }
-            this.IsKeyboardPluggedIn = KeyboardService.IsHardwareKeyboardActive;
+            this.IsKeyboardPluggedIn = KeyboardVisibilityListener.KeyboardVisibilityState.Instance.IsKeyboardOpen;
         }
 
         public void SetIsKeyboardPluggedIn(bool isPluggedIn)

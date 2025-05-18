@@ -1,7 +1,5 @@
-﻿using System.IO;
-using System.Threading.Tasks;
-using Kit.Forms.Services.Interfaces;
-using Xamarin.Forms;
+﻿using Kit.Forms.Services.Interfaces;
+using TinyTypeContainer;
 
 namespace Kit.Forms.Extensions
 {
@@ -36,7 +34,7 @@ namespace Kit.Forms.Extensions
         /// <returns></returns>
         public static Task<FileStream> CompressImage(Stream imageData, int Quality)
         {
-            var service = TinyIoC.TinyIoCContainer.Current.Resolve<IImageCompressService>();
+            var service = Container.Get<IImageCompressService>();
             return service.CompressImage(imageData, Quality);
         }
         public static ImageSource ByteToImage(this byte[] ByteArray)

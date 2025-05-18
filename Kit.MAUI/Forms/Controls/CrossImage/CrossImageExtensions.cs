@@ -1,8 +1,4 @@
 ﻿using Kit.Forms.Extensions;
-using System;
-using System.IO;
-using System.Threading.Tasks;
-using Xamarin.Forms;
 
 namespace Kit.Forms.Controls.CrossImage
 {

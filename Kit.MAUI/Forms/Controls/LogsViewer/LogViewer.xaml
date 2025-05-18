@@ -2,7 +2,7 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:logsviewer="clr-namespace:Kit.Forms.Controls.LogsViewer"
-             xmlns:extensions="clr-namespace:Kit.Extensions;assembly=Kit"
+             xmlns:extensions="clr-namespace:Kit.Extensions;assembly=Kit.MAUI"
              xmlns:sink="clr-namespace:Serilog.Events;assembly=Serilog"
              x:Class="Kit.Forms.Controls.LogsViewer.LogViewer"
              xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
@@ -15,11 +15,12 @@
             <StackLayout BindableLayout.ItemsSource="{Binding Logs}" Spacing="0">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate x:DataType="extensions:LogMsg">
-                        <Frame Margin="0" Padding="0" CornerRadius="0" IsClippedToBounds="True"
-                               xct:TouchEffect.PressedScale="0.98"
-                               xct:TouchEffect.PressedBackgroundColor="LightGray"
-                               xct:TouchEffect.NormalBackgroundColor="White"
-                               xct:TouchEffect.Command="{Binding AlertLog,Source={x:Reference Model}}">
+                        <Frame Margin="0" Padding="0" CornerRadius="0" IsClippedToBounds="True">
+                            <Frame.Behaviors>
+                                <xct:TouchBehavior PressedScale="0.98" DefaultBackgroundColor="White" 
+                                                   PressedBackgroundColor="LightGray" 
+                                                   Command="{Binding AlertLogCommand,Source={x:Reference Model}}"/>
+                            </Frame.Behaviors>
                             <StackLayout HorizontalOptions="FillAndExpand" Spacing="0">
                                 <BoxView BackgroundColor="Gray" HeightRequest="1" VerticalOptions="Start" />
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0">

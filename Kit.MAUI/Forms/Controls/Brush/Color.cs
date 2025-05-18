@@ -2,35 +2,35 @@
 {
     public class Color : Kit.Controls.CrossBrush.Color
     {
-        private Xamarin.Forms.Color NativeColor;
-        public override double R
+        private Microsoft.Maui.Graphics.Color NativeColor;
+        public override float R
         {
-            get => NativeColor.R;
-            set => NativeColor = new Xamarin.Forms.Color(value, G, B, A);
+            get => NativeColor.Red;
+            set => NativeColor = new Microsoft.Maui.Graphics.Color(value, G, B, A);
         }
 
-        public override double G
+        public override float G
         {
-            get => NativeColor.G;
-            set => NativeColor = new Xamarin.Forms.Color(R, value, B, A);
+            get => NativeColor.Green;
+            set => NativeColor = new Microsoft.Maui.Graphics.Color(R, value, B, A);
 
         }
-        public override double B
+        public override float B
         {
-            get => NativeColor.B;
-            set => NativeColor = new Xamarin.Forms.Color(R, G, value, A);
+            get => NativeColor.Blue;
+            set => NativeColor = new Microsoft.Maui.Graphics.Color(R, G, value, A);
 
         }
-        public override double A
+        public override float A
         {
-            get => NativeColor.A;
-            set => NativeColor = new Xamarin.Forms.Color(R, G, B, value);
+            get => NativeColor.Alpha;
+            set => NativeColor = new Microsoft.Maui.Graphics.Color(R, G, B, value);
         }
         public override Kit.Controls.CrossBrush.Color From(string v)
         {
             return new Color()
             {
-                NativeColor = Xamarin.Forms.Color.FromHex(v)
+                NativeColor = Microsoft.Maui.Graphics.Color.FromHex(v)
             };
         }
 

@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Kit.Controls.CrossBrush;
-using Xamarin.Forms;
+﻿using Kit.Controls.CrossBrush;
 
 namespace Kit.Forms.Controls.Brush
 {
-    public class Brush : CrossBrush<Xamarin.Forms.Brush, Color>
+    public class Brush : CrossBrush<Microsoft.Maui.Controls.Brush, Color>
     {
-        public override Xamarin.Forms.Brush ToNaviteBrush()
+        public override Microsoft.Maui.Controls.Brush ToNaviteBrush()
         {
-            Xamarin.Forms.Brush native = null;
+            Microsoft.Maui.Controls.Brush native = null;
             switch (this.BrushType)
             {
                 case BrushType.Solid:
@@ -18,7 +14,7 @@ namespace Kit.Forms.Controls.Brush
                     if (this.Stops.Any())
                     {
                         ((SolidColorBrush)native).Color =
-                            (Xamarin.Forms.Color)this.Stops.First().Color.ToNativeColor();
+                            (Microsoft.Maui.Graphics.Color)this.Stops.First().Color.ToNativeColor();
                     }
 
                     return native;
@@ -49,7 +45,7 @@ namespace Kit.Forms.Controls.Brush
         {
             foreach (var stop in stops)
             {
-                var Color = (Xamarin.Forms.Color)stop.Color.ToNativeColor();
+                var Color = (Microsoft.Maui.Graphics.Color)stop.Color.ToNativeColor();
                 native.GradientStops.Add(new GradientStop(Color, stop.Offset));
             }
         }
@@ -65,7 +61,7 @@ namespace Kit.Forms.Controls.Brush
             if (Application.Current.Resources[ResourceKey] is SolidColorBrush s)
             {
                 var c = s.Color;
-                string color = $"#{c.R:X2}{c.G:X2}{c.B:X2}";
+                string color = $"#{c.Red:X2}{c.Green:X2}{c.Blue:X2}";
                 this.Stops.Add(new GradientStop<Color>(new Color().From(color), 0));
                 this.BrushType = BrushType.Solid;
             }

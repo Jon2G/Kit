@@ -1,9 +1,10 @@
-﻿using Android.Content;
-using Android.Views;
+﻿using Android.Views;
 using Kit.Droid.Renders;
 using Kit.Forms.Controls;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.Android;
+using Microsoft.Maui.Controls.Compatibility;
+using Microsoft.Maui.Controls.Compatibility.Platform.Android;
+using Microsoft.Maui.Controls.Platform;
+using Context = Android.Content.Context;
 
 [assembly: ExportRenderer(typeof(SelectableLabel), typeof(SelectableLabelRenderer))]
 

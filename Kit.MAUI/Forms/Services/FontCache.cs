@@ -1,9 +1,5 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Security.Cryptography;
-using Xamarin.Forms;
 
 namespace Kit.Forms.Services
 {
@@ -22,17 +18,17 @@ namespace Kit.Forms.Services
                     string fontFilePath = null;
                     if (Device.RuntimePlatform == Device.Android)
                     {
-                        fontFilePath = Path.Combine(Xamarin.Essentials.FileSystem.CacheDirectory,
+                        fontFilePath = Path.Combine(FileSystem.Current.CacheDirectory,
                             exportFontAttribute.FontFileName);
                     }
                     else if (Device.RuntimePlatform == Device.UWP)
                     {
-                        fontFilePath = Path.Combine(Xamarin.Essentials.FileSystem.AppDataDirectory, "fonts",
+                        fontFilePath = Path.Combine(FileSystem.Current.AppDataDirectory, "fonts",
                             exportFontAttribute.FontFileName);
                     }
                     else if (Device.RuntimePlatform == Device.iOS)
                     {
-                        fontFilePath = Path.Combine(Xamarin.Essentials.FileSystem.CacheDirectory,
+                        fontFilePath = Path.Combine(FileSystem.Current.CacheDirectory,
                             exportFontAttribute.FontFileName);
                     }
 

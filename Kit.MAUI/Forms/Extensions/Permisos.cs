@@ -1,13 +1,10 @@
-﻿using System.Threading.Tasks;
-using Xamarin.Essentials;
-using Xamarin.Forms;
-
-namespace Kit.Forms.Extensions
+﻿namespace Kit.Forms.Extensions
 {
     public static class Permisos
     {
         public static async Task<bool> PedirPermiso(Permissions.BasePermission Permiso, string Mensaje = "Permita el acceso")
         {
+#if ANDROID || IOS  || MACCATALYST
             return await Device.InvokeOnMainThreadAsync(async () =>
             {
                 PermissionStatus status = await Permiso.CheckStatusAsync();
@@ -22,18 +19,20 @@ namespace Kit.Forms.Extensions
                 }
                 return (status == PermissionStatus.Granted);
             });
+#endif
+            throw new NotImplementedException("No se implementó el permiso para esta plataforma.");
         }
 
         public static async Task<bool> TenemosPermiso(Permissions.BasePermission Permiso) => (await GetPermissionStatus(Permiso) == PermissionStatus.Granted);
 
         public static bool IsDisabled(Permissions.BasePermission permission) => permission.ShouldShowRationale();
 
-        public static async Task<Xamarin.Essentials.PermissionStatus> GetPermissionStatus<T>() where T : Permissions.BasePermission, new()
+        public static async Task<PermissionStatus> GetPermissionStatus<T>() where T : Permissions.BasePermission, new()
         {
             return await GetPermissionStatus(new T());
         }
 
-        public static async Task<Xamarin.Essentials.PermissionStatus> GetPermissionStatus(Permissions.BasePermission Permiso)
+        public static async Task<PermissionStatus> GetPermissionStatus(Permissions.BasePermission Permiso)
         {
             return await Device.InvokeOnMainThreadAsync(async () =>
             {
@@ -55,7 +54,7 @@ namespace Kit.Forms.Extensions
                 //else
                 //{
                 //    return await EnsurePermission<T>(RequestMessage, Permiso); 
-                    
+
                 //}
             }
             else if (await Permiso.CheckStatusAsync() == PermissionStatus.Denied &&
@@ -69,15 +68,15 @@ namespace Kit.Forms.Extensions
 
         public static async Task<bool> RequestStorage()
         {
-          return  await Permisos.EnsurePermission<Xamarin.Essentials.Permissions.StorageRead>() == PermissionStatus.Granted &&
-                await Permisos.EnsurePermission<Xamarin.Essentials.Permissions.StorageWrite>() ==
-                PermissionStatus.Granted;
+            return await Permisos.EnsurePermission<Permissions.StorageRead>() == PermissionStatus.Granted &&
+                  await Permisos.EnsurePermission<Permissions.StorageWrite>() ==
+                  PermissionStatus.Granted;
         }
 
         public static async Task<bool> CanVibrate()
         {
             PermissionStatus can = await Permissions.CheckStatusAsync<Permissions.Vibrate>();
-            return can== PermissionStatus.Granted;
+            return can == PermissionStatus.Granted;
         }
     }
 }

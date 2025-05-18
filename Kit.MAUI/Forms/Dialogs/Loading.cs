@@ -1,5 +1,4 @@
 ﻿using Kit.Dialogs;
-using System;
 
 namespace Kit.Forms.Dialogs
 {
@@ -16,7 +15,10 @@ namespace Kit.Forms.Dialogs
 
         public IDisposable Show(string Text = "Cargando...")
         {
+#if ANDROID || IOS  || MACCATALYST
             return Acr.UserDialogs.UserDialogs.Instance.Loading(Text);
+#endif
+            throw new NotSupportedException();
         }
     }
 }

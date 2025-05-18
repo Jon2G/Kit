@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Xamarin.Forms;
-using Xamarin.Forms.PlatformConfiguration;
-using Xamarin.Forms.PlatformConfiguration.WindowsSpecific;
+﻿using Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;
 
 namespace Kit.Forms.Controls.WebView
 {
-    public class KitWebView : Xamarin.Forms.WebView
+    public class KitWebView : Microsoft.Maui.Controls.WebView
     {
         private NavigationRequest CurrentRequest;
         protected readonly Queue<NavigationRequest> NavigationQueue;
@@ -50,8 +44,8 @@ namespace Kit.Forms.Controls.WebView
         public KitWebView()
         {
             this.IsPlatformEnabled = true;
-            this.On<Windows>().SetIsJavaScriptAlertEnabled(true);
-            this.On<Windows>().SetExecutionMode(WebViewExecutionMode.SeparateProcess);
+            this.On<Microsoft.Maui.Controls.PlatformConfiguration.Windows>().SetIsJavaScriptAlertEnabled(true);
+            this.On<Microsoft.Maui.Controls.PlatformConfiguration.Windows>().SetExecutionMode(WebViewExecutionMode.SeparateProcess);
             this.ShowLoading = true;
             this.Navigated += Browser_Navigated;
             this.NavigationQueue = new Queue<NavigationRequest>();
@@ -108,6 +102,7 @@ namespace Kit.Forms.Controls.WebView
             var request = new NavigationRequest(navigateUrl);
             NavigationQueue.Enqueue(request);
             NavigateAsync();
+#if ANDROID || IOS || MACCATALYST
             using (Acr.UserDialogs.UserDialogs.Instance.Loading("Espere un momento...", show: ShowLoading))
             {
                 await request.Wait();
@@ -118,6 +113,7 @@ namespace Kit.Forms.Controls.WebView
                     }
                 });
             }
+#endif
         }
         private async void NavigateAsync()
         {

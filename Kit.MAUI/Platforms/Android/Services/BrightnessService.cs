@@ -1,8 +1,7 @@
 ﻿using Android.Views;
+using Kit.Droid.Services;
 using Kit.Services.Interfaces;
 using Plugin.CurrentActivity;
-using Kit.Droid.Services;
-using Xamarin.Forms;
 
 [assembly: Dependency(typeof(BrightnessService))]
 namespace Kit.Droid.Services
@@ -11,7 +10,7 @@ namespace Kit.Droid.Services
     {
         public void SetBrightness(float brightness)
         {
-            Window? window = CrossCurrentActivity.Current.Activity.Window;
+            var window = CrossCurrentActivity.Current.Activity.Window;
             WindowManagerLayoutParams attributesWindow = new WindowManagerLayoutParams();
 
             attributesWindow.CopyFrom(window.Attributes);
@@ -21,7 +20,7 @@ namespace Kit.Droid.Services
         }
         public float GetBrightness()
         {
-            Window? window = CrossCurrentActivity.Current.Activity.Window;
+            var window = CrossCurrentActivity.Current.Activity.Window;
             WindowManagerLayoutParams attributesWindow = new WindowManagerLayoutParams();
 
             attributesWindow.CopyFrom(window.Attributes);

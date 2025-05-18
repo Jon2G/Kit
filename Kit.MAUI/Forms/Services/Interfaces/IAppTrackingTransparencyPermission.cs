@@ -1,8 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Xamarin.Essentials;
-
-namespace Kit.Forms.Services.Interfaces
+﻿namespace Kit.Forms.Services.Interfaces
 {
     public interface IAppTrackingTransparencyPermission
     {

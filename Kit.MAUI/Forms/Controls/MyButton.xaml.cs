@@ -1,12 +1,11 @@
-﻿using System;
+﻿using CommunityToolkit.Maui.Core;
 using System.ComponentModel;
 using System.Windows.Input;
-using CommunityToolkit.Maui.Core;
 
 namespace Kit.Forms.Controls
 {
     [Preserve(AllMembers = true)]
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Skip)]
     public partial class MyButton : ContentView
     {
         public new static readonly BindableProperty MarginProperty = BindableProperty.Create(

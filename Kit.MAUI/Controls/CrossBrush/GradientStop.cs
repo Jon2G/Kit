@@ -1,6 +1,6 @@
 ﻿namespace Kit.Controls.CrossBrush
 {
-    public class GradientStop<C> where C : Color,new()
+    public class GradientStop<C> where C : Color, new()
     {
         public Color Color { get; set; }
         public float Offset { get; set; }
@@ -10,11 +10,11 @@
             this.Color = Color;
             this.Offset = Offset;
         }
-        public GradientStop<C> Oscurecer(double CorrectionFactor = -0.3)
+        public GradientStop<C> Oscurecer(float CorrectionFactor = -0.3f)
         {
-            double red = (double)Color.R;
-            double green = (double)Color.G;
-            double blue = (double)Color.B;
+            float red = Color.R;
+            float green = Color.G;
+            float blue = Color.B;
 
             if (CorrectionFactor < 0)
             {

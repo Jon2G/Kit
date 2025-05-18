@@ -1,8 +1,6 @@
 ﻿using AsyncAwaitBestPractices;
 using Kit.Forms.Services;
 using Kit.Model;
-using System.Threading.Tasks;
-using Xamarin.Forms;
 
 namespace Kit.Forms.Pages.OtgCodeBarSacnnerDetector
 {

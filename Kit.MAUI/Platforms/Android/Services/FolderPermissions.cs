@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Kit.Services.Interfaces;
+﻿using Kit.Services.Interfaces;
 
 namespace Kit.Droid.Services
 {
@@ -32,7 +30,7 @@ namespace Kit.Droid.Services
             }
             catch (Exception ex)
             {
-             Log.Logger.Error(ex,"");
+                Log.Logger.Error(ex, "");
             }
             return false;
         }

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using Plugin.CurrentActivity;
-using Xamarin.Forms;
-using Xamarin.Forms.Internals;
-using Microsoft.Maui.Devices;
 using Kit.Droid.Services;
+using Plugin.CurrentActivity;
 
 namespace Kit.Droid
 {
@@ -27,13 +22,13 @@ namespace Kit.Droid
             Set(new ToolsImplementation());
             (Instance as ToolsImplementation).Init(activity);
             CrossCurrentActivity.Current.Init(activity, bundle);
-            
+
             //ZXing.Net.Mobile.Forms.Android.Platform.Init();
             OrientationServices(activity);
             BaseInit();
             return Instance;
         }
-   
+
         private static void OrientationServices(Activity activity)
         {
             MessagingCenter.Subscribe<Page>(activity, nameof(Microsoft.Maui.Devices.DisplayOrientation.Landscape), sender =>

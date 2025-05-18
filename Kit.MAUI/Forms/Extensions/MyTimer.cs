@@ -1,8 +1,4 @@
-﻿using System;
-using System.Threading;
-using Xamarin.Forms;
-
-namespace Kit.Forms.Extensions
+﻿namespace Kit.Forms.Extensions
 {
     public class MyTimer
     {

@@ -1,11 +1,13 @@
-﻿namespace Kit.Forms.Services.Interfaces
+﻿using TinyTypeContainer;
+
+namespace Kit.Forms.Services.Interfaces
 {
     public abstract class IWidget
     {
         public abstract string AppWidgetProviderFullClassName { get; }
         public static void UpdateWidget(string AppWidgetProviderFullClassName)
         {
-            IUpdateWidget iWidget = TinyIoC.TinyIoCContainer.Current.Resolve<IUpdateWidget>();
+            IUpdateWidget iWidget = Container.Get<IUpdateWidget>();
             iWidget?.UpdateWidget(AppWidgetProviderFullClassName);
         }
 

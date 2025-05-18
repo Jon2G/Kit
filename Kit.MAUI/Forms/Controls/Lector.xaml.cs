@@ -1,20 +1,15 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using Kit.Forms.Extensions;
-using System.Windows.Input;
-
+﻿using AsyncAwaitBestPractices;
 using AsyncAwaitBestPractices.MVVM;
-using AsyncAwaitBestPractices;
+using Kit.Forms.Extensions;
 using Kit.MAUI.Forms.Pages;
+using System.ComponentModel;
+using System.Windows.Input;
 using ZXing.Net.Maui;
 using BarcodeFormat = ZXing.Net.Maui.BarcodeFormat;
 
 namespace Kit.Forms.Controls
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Skip)]
     public partial class Lector : ContentView
     {
         public static readonly BindableProperty ColorProperty = BindableProperty.Create(
@@ -224,10 +219,10 @@ namespace Kit.Forms.Controls
 
         public async void Abrir()
         {
-            if (this.BarcodeFormats is null || !this.BarcodeFormats.Any())
-            {
-                throw new WarningException("Please call Init before attemping to open this Reader");
-            }
+            //if (this.BarcodeFormats is null || !this.BarcodeFormats.Any())
+            //{
+            //    throw new WarningException("Please call Init before attemping to open this Reader");
+            //}
             await Permisos.EnsurePermission<Permissions.Camera>("Por favor permita el acceso");
             this.OpenCameraCommand.Execute(null);
         }

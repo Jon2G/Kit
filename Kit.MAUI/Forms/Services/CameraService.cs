@@ -1,8 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Threading.Tasks;
-using Kit.Enums;
-using Xamarin.Essentials;
+﻿using Kit.Enums;
 
 namespace Kit.Forms.Services
 {
@@ -49,11 +45,11 @@ namespace Kit.Forms.Services
             }
             string newFile = Path.Combine(tmpDir.FullName, photo.FileName);
             FileInfo file = new FileInfo(newFile);
-            if (Tools.Instance.RuntimePlatform==RuntimePlatform.iOS&&file.Exists)
+            if (Tools.Instance.RuntimePlatform == RuntimePlatform.iOS && file.Exists)
             {
                 return file;
             }
-            using (Stream stream= await photo.OpenReadAsync())
+            using (Stream stream = await photo.OpenReadAsync())
             {
                 using (FileStream newStream = new FileStream(file.FullName, FileMode.OpenOrCreate))
                 {

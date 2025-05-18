@@ -1,11 +1,9 @@
-﻿using System;
+﻿using System.ComponentModel;
 using System.Windows.Input;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Kit.Forms.Pages.PinView
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Skip)]
     public partial class PinPanel : ContentView
     {
         public PinPanel()
@@ -43,7 +41,7 @@ namespace Kit.Forms.Pages.PinView
         }
         public static readonly BindableProperty DotColorProperty =
             BindableProperty.Create(nameof(DotColor), typeof(Color), typeof(PinPanel), defaultBindingMode: BindingMode.OneWay,
-                defaultValue: Color.Red);
+                defaultValue: Colors.Red);
         public double DotSize
         {
             get => (double)GetValue(DotSizeProperty);
@@ -59,7 +57,7 @@ namespace Kit.Forms.Pages.PinView
         }
         public static readonly BindableProperty DotEmptyColorProperty =
             BindableProperty.Create(nameof(DotEmptyColor), typeof(Color), typeof(PinPanel), defaultBindingMode: BindingMode.OneWay,
-                defaultValue: Color.White);
+                defaultValue: Colors.White);
         public Color DotBorderColor
         {
             get => (Color)GetValue(DotBorderColorProperty);
@@ -67,7 +65,7 @@ namespace Kit.Forms.Pages.PinView
         }
         public static readonly BindableProperty DotBorderColorProperty =
             BindableProperty.Create(nameof(DotBorderColor), typeof(Color), typeof(PinPanel), defaultBindingMode: BindingMode.OneWay,
-                defaultValue: Color.Red);
+                defaultValue: Colors.Red);
         public ICommand PinSubmitCommand
         {
             get => (ICommand)GetValue(PinSubmitCommandProperty);
@@ -137,7 +135,7 @@ namespace Kit.Forms.Pages.PinView
         }
         public static readonly BindableProperty ButtonColorProperty =
             BindableProperty.Create(nameof(ButtonColor), typeof(Color), typeof(PinPanel), defaultBindingMode: BindingMode.OneWay,
-                defaultValue: Color.Red);
+                defaultValue: Colors.Red);
         public Color ButtonTextColor
         {
             get => (Color)GetValue(ButtonTextColorProperty);
@@ -145,7 +143,7 @@ namespace Kit.Forms.Pages.PinView
         }
         public static readonly BindableProperty ButtonTextColorProperty =
             BindableProperty.Create(nameof(ButtonTextColor), typeof(Color), typeof(PinPanel), defaultBindingMode: BindingMode.OneWay,
-                defaultValue: Color.White);
+                defaultValue: Colors.White);
         public string ClearButtonImageSource
         {
             get => (string)GetValue(ClearButtonImageSourceProperty);

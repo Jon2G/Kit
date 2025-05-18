@@ -1,12 +1,12 @@
-﻿using System;
-using Android.Content;
-using Android.Graphics;
-using Android.Runtime;
+﻿using Android.Graphics;
 using Kit.Droid.Renders;
 using Kit.Forms.Controls;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.Android;
-using Color = Xamarin.Forms.Color;
+using Microsoft.Maui.Controls.Compatibility;
+using Microsoft.Maui.Controls.Compatibility.Platform.Android;
+using Canvas = Android.Graphics.Canvas;
+using Context = Android.Content.Context;
+using Paint = Android.Graphics.Paint;
+using RectF = Android.Graphics.RectF;
 
 [assembly: ExportRenderer(typeof(ProgressRing), typeof(ProgressRingRenderer))]
 namespace Kit.Droid.Renders
@@ -15,13 +15,9 @@ namespace Kit.Droid.Renders
     public class ProgressRingRenderer : ViewRenderer
     {
         private Paint _paint;
-        private RectF _ringDrawArea;
+        private Android.Graphics.RectF _ringDrawArea;
         private bool _sizeChanged = false;
-        [Obsolete]
-        public ProgressRingRenderer()
-        {
-            SetWillNotDraw(false);
-        }
+
 
         public ProgressRingRenderer(Context context) : base(context)
         {
@@ -29,7 +25,7 @@ namespace Kit.Droid.Renders
         }
         protected override void OnDraw(Canvas canvas)
         {
-            var progressRing = (ProgressRing)Element;
+            var progressRing = Element as ProgressRing;
 
             if (_paint == null)
             {
@@ -63,8 +59,8 @@ namespace Kit.Droid.Renders
         }
 
         private void DrawProgressRing(Canvas canvas, float progress,
-                                      Color ringBaseColor,
-                                      Color ringProgressColor)
+            Microsoft.Maui.Graphics.Color ringBaseColor,
+            Microsoft.Maui.Graphics.Color ringProgressColor)
         {
             _paint.Color = ringBaseColor.ToAndroid();
             canvas.DrawArc(_ringDrawArea, 270, 360, false, _paint);

@@ -1,7 +1,5 @@
-﻿using System;
-using Kit.Forms.Controls.ActivityIndicator;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Kit.Forms.Controls.ActivityIndicator;
+
 
 // ReSharper disable once CheckNamespace
 namespace Kit.Forms.Controls

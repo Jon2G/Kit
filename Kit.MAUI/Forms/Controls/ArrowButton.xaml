@@ -1,16 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Frame xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:controls="clr-namespace:Kit.Forms.Controls;assembly=Kit.Forms"
+       xmlns:controls="clr-namespace:Kit.Forms.Controls;assembly=Kit.MAUI.MAUI"
        xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-       xmlns:converters="clr-namespace:Kit.Forms.Converters;assembly=Kit.Forms"
+       xmlns:converters="clr-namespace:Kit.Forms.Converters;assembly=Kit.MAUI.MAUI"
        xmlns:converters1="clr-namespace:Kit.Forms.Converters"
        xmlns:fonts="clr-namespace:Kit.Forms.Fonts"
        x:Class="Kit.Forms.Controls.ArrowButton"
        HorizontalOptions="FillAndExpand"  Padding="5" Visual="Default"
-       VerticalOptions="FillAndExpand"
-       xct:TouchEffect.PressedScale="0.99" 
-       xct:TouchEffect.NativeAnimation="True">
+       VerticalOptions="FillAndExpand">
     <Frame.Margin>
         <OnPlatform x:TypeArguments="Thickness">
             <On Platform="iOS">5</On>

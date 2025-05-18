@@ -1,4 +1,4 @@
-﻿using Xamarin.Forms;
+﻿
 namespace Kit.Forms.Controls
 {
     public static class ProgressRingUtils

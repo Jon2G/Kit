@@ -1,10 +1,7 @@
-﻿using System.IO;
-using System.Threading.Tasks;
-using Android.Content;
+﻿using Android.Content;
 using Android.Provider;
 using Kit.Droid.Services;
 using Kit.Forms.Services.Interfaces;
-using Xamarin.Forms;
 
 [assembly: Dependency(typeof(GalleryService))]
 namespace Kit.Droid.Services

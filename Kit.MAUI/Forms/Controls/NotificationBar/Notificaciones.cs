@@ -1,7 +1,5 @@
-﻿using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using Kit.Model;
-using Xamarin.Forms;
+﻿using Kit.Model;
+using System.Collections.ObjectModel;
 
 namespace Kit.Forms.Controls.NotificationBar
 {

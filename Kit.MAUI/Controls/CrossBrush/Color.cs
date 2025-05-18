@@ -2,15 +2,15 @@
 {
     public abstract class Color
     {
-        public abstract double R { get; set; }
-        public abstract double G { get; set; }
-        public abstract double B { get; set; }
-        public abstract double A { get; set; }
+        public abstract float R { get; set; }
+        public abstract float G { get; set; }
+        public abstract float B { get; set; }
+        public abstract float A { get; set; }
         public static string Transparent => "#00FFFFFF";
 
 
         public Color() { }
-        public Color(double R, double G, double B, double A)
+        public Color(float R, float G, float B, float A)
         {
             this.R = R;
             this.G = G;
