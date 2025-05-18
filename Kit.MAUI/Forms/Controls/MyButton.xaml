@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:controls="clr-namespace:Kit.Forms.Controls"
+             x:Class="Kit.Forms.Controls.MyButton">
+    <ContentView.Content>
+        <Frame x:Name="Frame" Margin="{Binding Margin}" IsVisible="True" 
+               CornerRadius="{Binding CornerRadius}"
+               BorderColor="{Binding BorderColor}" 
+               Padding="{Binding Padding}">
+            <Frame.Behaviors>
+                <xct:TouchBehavior DefaultBackgroundColor="{Binding BackgroundColor}" 
+                                   HoveredBackgroundColor="{Binding NativeAnimationColor}"
+                                   PressedBackgroundColor="{Binding PressedBackgroundColor}"
+                                   TouchGestureCompleted="TouchEffect_OnCompleted"
+                                   >
+
+                </xct:TouchBehavior>
+            </Frame.Behaviors>
+            <StackLayout Margin="{Binding StackMargin}" BackgroundColor="Transparent" 
+                         Orientation="{Binding Orientation}" VerticalOptions="{Binding StackVerticalOptions}"
+                         HorizontalOptions="{Binding StackHorizontalOptions}">
+                <controls:MyImage HeightRequest="{Binding ImgHeightRequest}" x:Name="Img"
+                                   MySource="{Binding ImgSource}"/>
+                <Label x:Name="Lbl" VerticalOptions="Center" FontSize="{Binding FontSize}"
+                       TextColor="{Binding TextColor}" Text="{Binding Text}"
+                       FontAttributes="{Binding FontAttributes}"/>
+            </StackLayout>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

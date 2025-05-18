@@ -92,46 +92,13 @@
     <PackageReference Include="ZXing.Net.Bindings.Android" Version="0.16.7" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Effects\ViewLifecycleEffect.cs" />
-    <Compile Include="Extensions\ContextExtensions.cs" />
-    <Compile Include="Renders\CircleViewRenderer.cs" />
-    <Compile Include="Renders\ProgressRingRenderer.cs" />
-    <Compile Include="Renders\SelectableLabelRenderer.cs" />
-    <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\BarCodeBuilder.cs" />
-    <Compile Include="Services\BrightnessService.cs" />
-    <Compile Include="Services\CustomPrintDocumentAdapter.cs" />
-    <Compile Include="Services\FolderPermissions.cs" />
-    <Compile Include="Services\GalleryService.cs" />
-    <Compile Include="Services\ImageCompressService.cs" />
-    <Compile Include="Services\ImageResizerService.cs" />
-    <Compile Include="Services\IpAddressService.cs" />
-    <Compile Include="Services\KeyboardService.cs" />
-    <Compile Include="Services\MainActivity.cs" />
-    <Compile Include="Services\ScreenManagerService.cs" />
-    <Compile Include="Services\Screenshot.cs" />
-    <Compile Include="Tools.cs" />
-    <Compile Include="ToolsImplementation.cs" />
-    <Compile Include="Utils\KeyboardUtils.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\AboutResources.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\values\strings.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\" />
-    <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\paths.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\xml\paths.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

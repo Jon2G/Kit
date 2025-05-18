@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kit.Forms.Controls.ActivityIndicatorView">
+  <ContentView.Content>
+      <StackLayout>
+          <Label Text="Call init before using this control." />
+      </StackLayout>
+  </ContentView.Content>
+</ContentView>

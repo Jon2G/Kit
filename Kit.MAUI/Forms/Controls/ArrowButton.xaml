@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Frame xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:controls="clr-namespace:Kit.Forms.Controls;assembly=Kit.Forms"
+       xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+       xmlns:converters="clr-namespace:Kit.Forms.Converters;assembly=Kit.Forms"
+       xmlns:converters1="clr-namespace:Kit.Forms.Converters"
+       xmlns:fonts="clr-namespace:Kit.Forms.Fonts"
+       x:Class="Kit.Forms.Controls.ArrowButton"
+       HorizontalOptions="FillAndExpand"  Padding="5" Visual="Default"
+       VerticalOptions="FillAndExpand"
+       xct:TouchEffect.PressedScale="0.99" 
+       xct:TouchEffect.NativeAnimation="True">
+    <Frame.Margin>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS">5</On>
+            <On Platform="Android">3</On>
+        </OnPlatform>
+    </Frame.Margin>
+    <Frame.Resources>
+        <converters1:StringNullOrEmptyBoolConverter x:Key="StringNullOrEmptyBoolConverter" IsReversed="True"/>
+    </Frame.Resources>
+    <Frame.ControlTemplate>
+        <ControlTemplate>
+            <Grid ColumnDefinitions="Auto,*,Auto" Margin="0"  >
+                    <Image HeightRequest="{TemplateBinding  IconHeightRequest}" Margin="5,0,0,0" Grid.Column="0" VerticalOptions="CenterAndExpand" 
+                   Source="{TemplateBinding Icon}"/>
+                    <StackLayout Margin="10,5" Grid.Column="1">
+                        <Label Text="{TemplateBinding Title}" 
+                       TextColor="{TemplateBinding TitleColor,Mode=TwoWay}"
+                       FontSize="{TemplateBinding TitleFontSize}"
+                       FontAttributes="{TemplateBinding TitleFontAttributes}"
+                       IsVisible="{TemplateBinding Title,Converter={StaticResource StringNullOrEmptyBoolConverter}}"
+                       FontFamily="{TemplateBinding TitleFontFamily}"/>
+
+                        <Label Grid.Row="1" Text="{TemplateBinding SubTitle}" 
+                       TextColor="{TemplateBinding SubTitleColor,Mode=TwoWay}" 
+                       FontSize="{TemplateBinding SubTitleFontSize}"
+                       FontAttributes="{TemplateBinding SubTitleFontAttributes}"
+                       IsVisible="{TemplateBinding SubTitle,Converter={StaticResource StringNullOrEmptyBoolConverter}}"
+                       FontFamily="{TemplateBinding SubtitleFontFamily}"/>
+                    </StackLayout>
+
+                    <Image Margin="10,0" Grid.Column="2" VerticalOptions="CenterAndExpand" IsVisible="{TemplateBinding IsArrowVisible}">
+                        <Image.Source>
+                            <FontImageSource Size="30"
+                                     Glyph="{x:Static fonts:FontelloIcons.RightArrow}"  
+                                     FontFamily="{x:Static fonts:FontelloIcons.Font}" 
+                                     Color="{TemplateBinding ArrowColor}"/>
+                        </Image.Source>
+                    </Image>
+                    <Label />
+                </Grid>
+        </ControlTemplate>
+    </Frame.ControlTemplate>
+</Frame>

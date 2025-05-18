@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Kit.Forms.Controls" 
+             xmlns:noti="clr-namespace:Kit.Forms.Controls.NotificationBar"
+             x:Class="Kit.Forms.Controls.NotificationBar.CustomToolBar" 
+             BindingContext="{Static noti:Notificaciones.Instance}"
+             BackgroundColor="{DynamicResource ToolbarDynamicColor}"   
+             x:DataType="noti:CustomToolBar"
+             x:Name="Me">
+    <ContentView.Content>
+        <StackLayout  Spacing="3" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+
+            <controls:MyImageButton MySource="menu_bar.png" Clicked="ToogleMenu"
+                         Margin="5" HeightRequest="30"  IsVisible="{Binding IsSandwichVisible}"
+                         HorizontalOptions="Start" x:Name="IconMenu"/>
+            <StackLayout Margin="5" Padding="0" HeightRequest="30" HorizontalOptions="FillAndExpand" 
+                         BindableLayout.ItemsSource="{Binding Elementos}"
+                         BindingContext="{x:Static noti:Notificaciones.Instance}" x:DataType="noti:Notificaciones"
+                         Orientation="Horizontal">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="noti:Notificacion">
+                        <Grid HeightRequest="30">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Click"/>
+                            </Grid.GestureRecognizers>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <controls:MyImage HeightRequest="30" MySource="{Binding Imagen,Mode=OneWay}" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+                            <Frame CornerRadius="10" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" BackgroundColor="{Binding Color,Mode=OneWay}" BindingContext="{Binding .}"/>
+                            <Label HorizontalOptions="CenterAndExpand" Grid.RowSpan="2" Grid.Column="1" VerticalOptions="CenterAndExpand" Text="{Binding Texto,Mode=OneWay}" FontSize="Medium" TextColor="Black" />
+                        </Grid>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+
+            <controls:ProgressRing ProgressColor="Coral" IsVisible="{Binding IsProgressVisible}" 
+                                 HorizontalOptions="End" VerticalOptions="FillAndExpand" 
+                                 HeightRequest="30" WidthRequest="30" 
+                                 x:Name="Progress" Progress="{Binding ProgressSource}"
+                                 BackgroundColor="Transparent" Margin="0">
+                <controls:ProgressRing.Style>
+                    <Style TargetType="{x:Type controls:ProgressRing}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ProgressSource}" Value="1"
+                                         TargetType="{x:Type controls:ProgressRing}">
+                                <Setter Property="ProgressColor" Value="LightGreen"/>
+                            </DataTrigger>
+
+                            <DataTrigger Binding="{Binding ProgressSource}" Value="0"
+                                         TargetType="{x:Type controls:ProgressRing}">
+                                <Setter Property="RingBaseColor" Value="#C9E9C9"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </controls:ProgressRing.Style>
+            </controls:ProgressRing>
+
+            <controls:MyButton BorderColor="Transparent" HorizontalOptions="End"  HeightRequest="30" Padding="0" Margin="0" StackMargin="0"
+                              ImgSource="{Binding Logo}"
+                              IsVisible="{Binding IsLogoVisible}" 
+                              Text="{Binding LogoText}" BindingContext="{Reference Name=Me}"/>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

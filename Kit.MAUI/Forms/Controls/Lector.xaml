@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:fonts="clr-namespace:Kit.Forms.Fonts"
+             xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:controls="clr-namespace:Kit.Forms.Controls"
+             mc:Ignorable="d" x:Name="Me"
+             x:Class="Kit.Forms.Controls.Lector">
+    <Image HorizontalOptions="Fill">
+        <Image.Behaviors>
+            <xct:ImageTouchBehavior PressedScale="0.9" Command="{Binding OpenCameraCommand,Source={x:Reference Me}}"></xct:ImageTouchBehavior>
+        </Image.Behaviors>
+        <Image.Source>
+            <FontImageSource Color="{Binding Color,Source={x:Reference Me}}"
+                                 Glyph="{x:Static fonts:FontelloIcons.Camera}"
+                                 FontFamily="{x:Static fonts:FontelloIcons.Font}"
+                             Size="{Binding FontSize,Source={x:Reference Me}}"/>
+        </Image.Source>
+    </Image>
+</ContentView>
